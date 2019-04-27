@@ -49,10 +49,10 @@ google_fonts:        Lato
 google_analytics:    UA-92346434-1
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
-disqus_shortname:    MinominoDomino2
+disqus_shortname:    Minomi
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2019. by MinominoDomino'
+copyright:           '&copy; 2019. by Minomi'
 
 # Format of the permalinks
 permalink:           pretty
