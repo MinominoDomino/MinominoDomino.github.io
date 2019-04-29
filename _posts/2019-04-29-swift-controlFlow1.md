@@ -10,7 +10,7 @@ tags: swift
 제어문을 알아보자.
 
 제어문은 특정 조건에 따라 기능을 제어하는 기능입니다.
-제어문에는 `for-in`, `while`, `switch`, `if guard`가 있습니다.
+제어문에는 `for-in`, `while`, `switch`, `if`가 있습니다.
 1부에서는 for in과 while를 다뤄볼게요.
 하나씩 알아봅시다.
 
@@ -51,6 +51,7 @@ for (name, age) in personInfo {
 
 이번에는 숫자 범위를 정해서 순회를 합니다.
 - `for [임시변수명] In [from...to]`
+
 ```swift
 for number in 5...10 {
     print(number)   //5 6 7 8 9 10
@@ -59,6 +60,7 @@ for number in 5...10 {
 
 이번에는 범위 연산자를 사용해서 순회를 합니다.
 - `for [임시변수명] In [from..[범위연산자]to]`
+
 ```swift
 var clock: Int = 13
 for time in 1..<clock {
@@ -76,6 +78,7 @@ for value in stride(from: 0, through: 6, by: 2) {
 
 값 제어없이 단순 반복경우, 임시변수를 `_`로 생략할 수 있고 성능을 더 높일 수 있습니다.
 - `for _ In [from...to] `
+
 ```swift
 let base = 3
 let power = 10
@@ -91,8 +94,8 @@ while은 특정 조건이 만족하는 동안 루프를 실행하고 조건이 �
  기본 while과 repeat-while 두 종류의 루프가 있습니다.
  repeat-while은 기본 while과 다르게 먼저 루프를 실행하고 조건 검사가 이루워집니다.
  가장 기본적인 예제를 해볼게요.
- - 원형 표현 `while [조건] { }`
- - 원형 표현 `repeat { } while [조건]`
+ - `while [조건] { }`
+ - `repeat { } while [조건]`
 
 ```swift
 ar startTime: Int = 0
