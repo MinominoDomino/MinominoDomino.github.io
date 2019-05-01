@@ -26,7 +26,7 @@ tags: swift
 ```swift
 var nomal: Int = nil  //error
 
-![test](./assets/img/swift-optional/2019-05-01-01.png)
+![test](/assets/img/swift-optional/2019-05-01-01.png)
 var nomal: Int? = nil
 
 var nonOptionalRet: Int = 10
