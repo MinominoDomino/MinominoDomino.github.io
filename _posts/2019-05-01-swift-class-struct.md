@@ -70,6 +70,8 @@ print(someOne.getInfo())    //(name: "KIM", age: 20)
 자식클래스는 서브클래스, 부모클래스는 슈퍼클래스라고 불리기도 합니다.
  - class [서브클래스] : [슈퍼클래스] { }
 
+[Apple swift document - Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html)
+
 다음 예제는 스마트폰 클래스를 상속받는 애플폰 클래스를 구현하고 애플폰 클래스로 아이폰을 만드는 예제입니다.
  
 ```swift
@@ -113,6 +115,11 @@ iphone.powerOff()   //핸드폰을 종료합니다
    - override func [메서드이름] { }
 
 `super`키워드는 부모클래스로 접근을 의미합니다.
+
+또한, `final` 키워드를 사용하여 서브클래스에서 오버라이드를 방지 할 수 있습니다.
+final로 선언된 메서드나 프로퍼티를 오버라이드 하면 컴파일에서 에러가 발생합니다.
+
+[Apple swift document - Overried](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html)
 다음 예제는 스마트폰 클래스를 상속받는 삼성폰 클래스를 구현하고 스마트폰 클래스의 powerOff메서드를 재정의하는 예제입니다.
  
 ```swift
