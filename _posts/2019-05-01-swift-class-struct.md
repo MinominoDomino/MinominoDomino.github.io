@@ -221,6 +221,7 @@ hyundai.brandName() //HYUNDAI
 ###### 해당 챕터의 playground 테스트 소스는 제 깃헙에 올라가 있어요~
 ###### [눌러서 이동! star(별) 꾸욱 해주세요ㅎㅎ](https://github.com/MinominoDomino/swift-grammar-house)
 
+![test](/assets/img/web-log.png)
 
 
 
