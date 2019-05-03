@@ -15,7 +15,7 @@ tags: ios
 
 가장 쉽게 지금 아이폰을 켜서 설정을 누르면 나오는 화면이 테이블 뷰로 이루워져 있습니다.
 
-<img src="https://MinominoDomino.github.io/assets/img/ios/viewController/16.png" width="20%">
+<img src="https://MinominoDomino.github.io/assets/img/ios/viewController/16.PNG" width="20%">
 
 이러한 테이블 화면을 만드는데 IOS에서 두가지 방법이 있습니다.
 1. UITableViewController를 이용한 방법
@@ -129,7 +129,7 @@ Main.Storyboard로 이동해서 라이브러리 영역에서 `TableViewControlle
 
 이제 실행을 해보면! 잘나오네요 ㅎㅎㅎㅎ 이렇게 가장 기본적인 테이블 뷰를 만들어봤습니다.
 
-<img src="https://MinominoDomino.github.io/assets/img/ios/viewController/15.png" width="50%">
+<img src="https://MinominoDomino.github.io/assets/img/ios/viewController/15.PNG" width="50%">
 
 
 
