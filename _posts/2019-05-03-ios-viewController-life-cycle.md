@@ -1,55 +1,64 @@
-씬 만들기
+---
+layout: post
+title:  "[IOS] 뷰컨트롤러 생명주기(ViewController Life Cycle)"
+subtitle:   "IOS 뷰컨트롤러 생명주기"
+categories: devlog
+tags: ios
 
-학습목표
-IOS 씬의 의미를 이해한다
-인터페이스 빌더로 씬을 작성한다
-씬을 구성하는 뷰를 코드로 제어한다
+---
+
+뷰컨트롤러 생명주기(ViewController Life Cycle)를 알아보자.
+
+## ViewController
+모든 IOS 앱은 하나의 화면에 하나의 ViewController를 가지고 있습니다.
+그리고 여러 화면으로 앱이 구성되어 있으니 뷰컨트롤러도 여러개 일거에요!
+이러한 여러 뷰컨트롤러들은 각자 자신들의 생명주기를 가지고 있습니다.
+뷰컨트롤러의 주요 역활로는 다음과 같습니다.
+
+- 데이터 변경에 따른 응답으로 뷰들의 컨텐츠를 업데이트
+- 뷰와 사용자의 상호 작용에 반응
+- 뷰 관리와 인터페이스의 레이아웃을 관리
+- 앱에서 다른 뷰컨트롤러와 다른 오브젝트를 관리
+
+## 뷰컨트롤러 상태 종류
+뷰컨트롤러는 4가지의 상태를 가지고 있습니다.
+
+|상태| 설명 |
+|--------|--------|
+|Appearing| 뷰가 사라져있다가 나타날려는 상태|
+|Appeared| 뷰가 나타난 상태|
+|Disappearing| 뷰가 나타나있다가 사라질려는 상태|
+|Disappeared| 뷰가 사라진 상태|
+
+![뷰컨트롤러](https://MinominoDomino.github.io/assets/img/ios/viewController.png)
+
+## 뷰컨트롤러 함수
+뷰컨트롤러는 상태 진입에 따른 제어 함수를 제공합니다.
+
+|함수| 시점 |
+|--------|--------|
+|loadView| 뷰를 메모리에 올릴때 호출 |
+|viewDidLoad| 뷰가 메모리에 올라간 후 호출 |
+|viewWillAppear| 뷰가 화면으로 표시되기 전에 호출 |
+|viewDidAppear| 뷰가 화면으로 표시되면 호출 |
+|viewWillDisappear| 뷰가 화면에서 사라지기 전에 호출 |
+|viewDidDisappear| 뷰가 화면에서 사라지면 호출 |
+
+loadView는 왠만하면 직접 호출 하지말고 viewDidLoad에서 해주시면됩니다.
+viewWillAppear는 viewDidLoad와 같은 것 처럼 보이지만, 다른 뷰로 이동하고 올때마다 호출되며 화면이 나타날때 수행할 작업을 하면된다. 직접 예로 작성해서 뷰를 이동하면 viewDidLoad는 처음에만 실행되고 viewWillAppear만 실행되는 것을 볼 수 있다.
+직접 뷰컨트롤러가 제공하는 함수를 오버라이딩하여 print로 확인하면서 익히는게 빠릅니다.
+
+![뷰컨트롤러실습](https://MinominoDomino.github.io/assets/img/ios/viewController-ex.png)
 
 
-UIKit 
-사용자 인터페이스 작성을 위한 요소를 제공하는 프레임워크
-콘텐츠 출력용 뷰 
-사용자 입력을 받는 컨트롤
-이를 제어하는 뷰 컨트롤러
+## 참조
 
-씬 : IOS에서 화면 단위를 나타냄
-여러 씬을 사용자의 산호 동작에 따라 컨테츠를 출력하고 작용한다.
--
-씬의 구성
-뷰 컨트롤러
-
-뷰
-
-
-#씬 작성방법
-1. 인터페이스 빌더
-스토리보드 사용
-단 동적인 화면은 불가능
-
-2. 코드로 작성
-동적으로 화면 구성은 가능하지만 인터페이스 빌더의 편리함이 배제된다
+[애플 개발 문서 - UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller)
 
 
 
-뷰 속성
-뷰의 속성은 Xcode의 유팅리티 영역의 인스펙터를 사용한다.
-이 중 속성 인스펙터에서 해당 뷰의 속성을 설정한다.
-크기 인스펙터에서 뷰의 크기를 설정한다.
 
 
-#인터페이스 빌더로 씬 작성하기
-라이브러리에서 뷰 배치
 
-#뷰 컨트롤러
-씬마다 뷰 컨트롤러가 존재한다.
-뷰 컨트롤러는 UIViewController를 상속한다.
-
-####씬의 생명 주기 (포스팅용 자세히)
-viewDidLoad()
-처음에 뷰가 만들어지면서 
-
-viewWillAppear()
-
-view
 
 
