@@ -131,6 +131,77 @@ Main.Storyboard로 이동해서 라이브러리 영역에서 `TableViewControlle
 
 <img src="https://MinominoDomino.github.io/assets/img/ios/viewController/15.PNG" width="50%">
 
+## 뷰 컨트롤러에 테이블뷰 넣어서 하기
+기본 뷰 컨트롤러에 테이블뷰를 넣어서 만들수 있어요.
+이렇게 하면 뷰를 내 마음대로 배치 할 수 있어서 화면 커스텀 하는데 편하겠죠?
+따라해봅시다.
+
+위 예제에서 기본 ViewController를 과감히 삭제해 버렸기떄문에 새롭게 하나 만들어 볼게요
+File -> New -> File에서 cocoa touch class를 선택하고 서브클래스는 UIViewController, 이름은 MyViewCOntroller로 만들어볼게요.
+![17.png](https://MinominoDomino.github.io/assets/img/ios/viewController/17.png)
+![18.png](https://MinominoDomino.github.io/assets/img/ios/viewController/18.png)
+![19.png](https://MinominoDomino.github.io/assets/img/ios/viewController/19.png)
+
+
+`TableView`와 `TableViewCell`를 라이브러리에서 찾아서 넣어둘게요.
+그리고 TableViewCell의 `Identifier`를 FriendsCell이라고 넣겠습니다.
+![20.png](https://MinominoDomino.github.io/assets/img/ios/viewController/20.png)
+
+이제 MyViewController.swift로 이동합니다.
+테이블뷰 컨트롤러에서 섹션의 수, 행의 수, 셀의 정보를 기본적으로 받는 함수가 오버라이드 되어있었는데 
+여기에는 그런게 없네요??? 그럼 직접 오버라이드를 해주죠
+`UITableViewDelegate`와 `UITableViewDataSource`를 상속해줍니다.
+이 둘의 내용은 따로 포스팅할게요! 일단은 그대로 따라해봅시다.
+
+![21.png](https://MinominoDomino.github.io/assets/img/ios/viewController/21.png)
+그럼 경고와 함께 프로토콜을 추가 할 거냐고 물어보네요? fix버튼을 눌러봅시다.
+
+![22.png](https://MinominoDomino.github.io/assets/img/ios/viewController/22.png)
+어디서 많이 보던 함수 두개가 새로 생겼어요.
+테이블뷰 컨트롤러에서 행의 갯수와 셀의 정보를 넣어주는 함수가 자동으로 오버라이드 되었네요?
+그럼 전처럼 행의 갯수정보와 셀의 정보를 직접 코딩해 줍니다.
+`Identifier` 값을 바꾸는거 잊지마세요!!!
+
+![23.png](https://MinominoDomino.github.io/assets/img/ios/viewController/23.png)
+
+자 그럼 코딩은 다 끝났어요
+스토리보드 파일로 이동해서 새로운 뷰를 하나 넣어줄게요. 테이블 뷰 밑에 넣어서 여러 뷰로 화면을 커스텀 할 수 있다는 걸 보여줄게요. 그리고 백그라운드 색상도 바꿔봅시다.
+![24.png](https://MinominoDomino.github.io/assets/img/ios/viewController/24.png)
+
+
+그리고 뷰 컨트롤러의 클래스를 MyViewController로 바꿔줍니다.
+![25.png](https://MinominoDomino.github.io/assets/img/ios/viewController/25.png)
+
+와 그럼 우리는 코딩으로 행의 수와 셀의 정보를 알려줬고 컨트롤러의 클래스도 설정했고 셀의 식별자 까지 설정해줬으니 
+테이블뷰 컨트롤러에서 했던거랑 똑같이 모든 작업을 다 해줬네요! 현기증 날 거 같으니 빨리 실행해보죠!
+![26.png](https://MinominoDomino.github.io/assets/img/ios/viewController/26.png)
+
+
+음..????
+테이블에 왜 정보가 출력되지 않을까요???
+아까 UITableViewDelegate와 UITableViewDataSource를 상속해준거 기억나죠?
+델리게이트와 데이터소스를 지정해줘야하는데 빠져있어서 그래요.
+
+그래서 우리는 테이블뷰의 아웃렛을 만들어서 테이블뷰의 델리게이트와 데이터소스를 뷰 컨트롤러로 지정해줄게요.
+
+뷰에서 마우스 우클릭해서 드래그하거나 컨트롤를 누르고 드래그하여 테이블뷰의 아웃렛을 만들어줍니다.
+![27.png](https://MinominoDomino.github.io/assets/img/ios/viewController/27.png)
+
+뷰 컨트롤러의 ViewDidLoad()에서 테이블뷰 아웃렛의 델리게이트와 데이터소스를 self로 입력합니다.
+![28.png](https://MinominoDomino.github.io/assets/img/ios/viewController/28.png)
+
+그리고 실행을 해보면 우리가 원하던 화면이 나오네요!!!ㄴ
+![29.png](https://MinominoDomino.github.io/assets/img/ios/viewController/29.png)
+
+
+
+
+
+
+
+
+
+
 
 
 
