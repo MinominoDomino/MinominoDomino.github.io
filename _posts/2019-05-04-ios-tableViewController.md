@@ -90,6 +90,7 @@ Class에 TableViewControllerEx라고 입력하고 서브클래스를 `UITableVie
 기본으로 cell이라는 상수가 만들어져있는데, tableView의 `dequeueReusableCell()`함수를 호출해서 받네요?
 dequeueReusableCell()이 뭔지는 모르겠지만 재사용셀을 큐에서 빼나봐요.
 이건 나중에 알아보고 여기서 `withIdentifier`의 값만 원하는 식별자로 바꿔줄게요.
+[dequeueReusableCell() 포스팅 이동!](https://minominodomino.github.io/devlog/2019/05/06/ios-DequeueReusableCell/)
 그리고 셀의 텍스트를 스토어데이터의 프렌즈리스트의 indexPath.row 번째로 세팅해줍니다.
 
 indexPath.row는 뭘까요? `indexPath는 테이블의 섹션번호와 행번호`가 들어있어요
@@ -114,7 +115,7 @@ Main.Storyboard로 이동해서 라이브러리 영역에서 `TableViewControlle
 
 ![12.png](https://MinominoDomino.github.io/assets/img/ios/viewController/12.png)
 
-속성 인스펙터에서 `Identifier`를 dequeueReusableCell()함수에서 `withIdentifier에 설정한 값`으로 넣어줍니다.
+속성 인스펙터에서 `Identifier`를 dequeueReusableCell()함수에서 `withIdentifier에 설정한 값`으로 넣어줍니다.s
 여기서 식별자에 맞는 셀을 가져와 뷰에 할당하게 되요. 그러니 식별자 값이 다르면 안되겠죠?
 
 ![13.png](https://MinominoDomino.github.io/assets/img/ios/viewController/13.png)
