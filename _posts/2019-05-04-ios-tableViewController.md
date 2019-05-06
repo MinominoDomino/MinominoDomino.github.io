@@ -88,7 +88,8 @@ Class에 TableViewControllerEx라고 입력하고 서브클래스를 `UITableVie
 테이블을 만들기위해서는 각 아이템 하나의 정보도 알려줘야겠죠? 각 행하나를 `테이블 셀`이라고 부릅니다.
 이 함수에서 테이블 셀 하나의 정보를 설정해주면됩니다.
 기본으로 cell이라는 상수가 만들어져있는데, tableView의 `dequeueReusableCell()`함수를 호출해서 받네요?
-dequeueReusableCell()이 뭔지는 모르겠지만 재사용셀을 큐에서 빼나봐요. 이건 나중에 알아보고 여기서 `withIdentifier`의 값만 원하는 식별자로 바꿔줄게요.
+dequeueReusableCell()이 뭔지는 모르겠지만 재사용셀을 큐에서 빼나봐요.
+이건 나중에 알아보고 여기서 `withIdentifier`의 값만 원하는 식별자로 바꿔줄게요.
 그리고 셀의 텍스트를 스토어데이터의 프렌즈리스트의 indexPath.row 번째로 세팅해줍니다.
 
 indexPath.row는 뭘까요? `indexPath는 테이블의 섹션번호와 행번호`가 들어있어요
@@ -151,7 +152,8 @@ File -> New -> File에서 cocoa touch class를 선택하고 서브클래스는 U
 테이블뷰 컨트롤러에서 섹션의 수, 행의 수, 셀의 정보를 기본적으로 받는 함수가 오버라이드 되어있었는데 
 여기에는 그런게 없네요??? 그럼 직접 오버라이드를 해주죠
 `UITableViewDelegate`와 `UITableViewDataSource`를 채택해줍니다.
-이 둘의 내용은 따로 포스팅할게요! 일단은 그대로 따라해봅시다.
+이 둘의 내용은 따로 포스팅할게요! 일단은 그대로 따라해봅시다.  
+[델리게이트와 데이터소스 포스팅 이동!](https://minominodomino.github.io/devlog/2019/05/06/ios-tableViewDataSourceAndDelegate/)
 
 ![21.png](https://MinominoDomino.github.io/assets/img/ios/viewController/21.png)
 그럼 경고와 함께 프로토콜을 추가 할 거냐고 물어보네요? fix버튼을 눌러봅시다.
