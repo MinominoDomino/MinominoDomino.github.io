@@ -23,7 +23,7 @@ tags: ios
 
 차이는 테이블뷰 컨트롤러냐 뷰 컨트롤러냐 차이죠???
 근데 테이블뷰 컨트롤러를 이용하면 간단하게 할 수 있지만 화면을 커스텀하기가 힘들어요.
-하지만 뷰 컨트롤러를 이용하면 뷰를 마음대로 커스텀할수 있습니다.
+하지만 뷰 컨트롤러를 이용하면 화면을 마음대로 커스텀할수 있습니다.
 두 방법 모두 가장 쉽게 예로 설명해볼게요.
 
 ## 테이블뷰 컨트롤러 이용한 방법
@@ -150,7 +150,7 @@ File -> New -> File에서 cocoa touch class를 선택하고 서브클래스는 U
 이제 MyViewController.swift로 이동합니다.
 테이블뷰 컨트롤러에서 섹션의 수, 행의 수, 셀의 정보를 기본적으로 받는 함수가 오버라이드 되어있었는데 
 여기에는 그런게 없네요??? 그럼 직접 오버라이드를 해주죠
-`UITableViewDelegate`와 `UITableViewDataSource`를 상속해줍니다.
+`UITableViewDelegate`와 `UITableViewDataSource`를 채택해줍니다.
 이 둘의 내용은 따로 포스팅할게요! 일단은 그대로 따라해봅시다.
 
 ![21.png](https://MinominoDomino.github.io/assets/img/ios/viewController/21.png)
@@ -179,7 +179,7 @@ File -> New -> File에서 cocoa touch class를 선택하고 서브클래스는 U
 
 음..????
 테이블에 왜 정보가 출력되지 않을까요???
-아까 UITableViewDelegate와 UITableViewDataSource를 상속해준거 기억나죠?
+아까 UITableViewDelegate와 UITableViewDataSource를 채택해준거 기억나죠?
 델리게이트와 데이터소스를 지정해줘야하는데 빠져있어서 그래요.
 
 그래서 우리는 테이블뷰의 아웃렛을 만들어서 테이블뷰의 델리게이트와 데이터소스를 뷰 컨트롤러로 지정해줄게요.
@@ -190,7 +190,7 @@ File -> New -> File에서 cocoa touch class를 선택하고 서브클래스는 U
 뷰 컨트롤러의 ViewDidLoad()에서 테이블뷰 아웃렛의 델리게이트와 데이터소스를 self로 입력합니다.
 ![28.png](https://MinominoDomino.github.io/assets/img/ios/viewController/28.png)
 
-그리고 실행을 해보면 우리가 원하던 화면이 나오네요!!!ㄴ
+그리고 실행을 해보면 우리가 원하던 화면이 나오네요!!!
 ![29.png](https://MinominoDomino.github.io/assets/img/ios/viewController/29.png)
 
 
