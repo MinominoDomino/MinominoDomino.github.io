@@ -74,7 +74,7 @@ var isSuspended: Bool { get set }
 하지만 다운로드 받는 동안 메인쓰레드가 다른일을 할 수 없어 오퍼레이션큐를 이용하여 다운로드 작업을 메인쓰레드가 아닌곳에서 실행하겠습니다.
 
 먼저, 새로운 프로젝트를 만들고 다음 그림처럼 뷰를 꾸며주세요.
-![1.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/1.png)
+![1.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/1.png)
 
 뷰 컨트롤러로 이동해서 코딩을 해줍시다.
 ```swift
@@ -102,20 +102,20 @@ var isSuspended: Bool { get set }
 	countLabel.text = String(count)
 }
 ```
-![2.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/2.png)
+![2.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/2.png)
 
 다운로드 버튼 액션에서 용량이 큰 이미지를 찾아서 `URL객체`로 만들고 `Data객체`로 받아 `UIImage`를 만듭니다.
 그리고 이미지뷰에 이미지로 넣는 기능을 구현합니다.
 에드플러스버튼은 단순히 레이블의 값을 받아 +1하여 레이블에 표시해주는 기능을 구현합니다.
 
 이제 실행을 해보겠습니다.
-![3.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/3.png)
+![3.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/3.png)
 
 다운로드 버튼을 누르고 +1버튼을 게속 눌러보겠습니다.
 버튼을 아무리 눌러봐도 레이블의 값이 변하질 않습니다.
 게속게속 눌러보겠습니다. 똑같군요.......
 이때, 이미지 다운로드가 완료되어 레이블의 값이 변하는군요???
-![4.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/4.png)
+![4.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/4.png)
 
 왜 이럴까요??
 URL로부터 데이터를 가져오는 `Data메서드는 동기 메서드`입니다.
@@ -141,7 +141,7 @@ downloadBtnTouchUp()액션을 아래처럼 바꿔보겠습니다.
     } else { return }
 }
 ```
-![5.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/5.png)
+![5.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/5.png)
 
 중간에 보시면 `OperationQueue().addOperation { }` 으로 데이터를 가져오는 메서드와 이미지뷰에 추가하는 작업을 감싸줬습니다.
 이렇게 감싸진 곳의 작업은 메인쓰레드가 아닌 곳에서 실행이 됩니다.
@@ -151,14 +151,14 @@ OperationQueue().addOperation는 메인쓰레드가 아닌 곳에서 작업을 �
 하지만, `UI오브젝트를 제어하는 작업은 무조건 메인 UI쓰레드에서 작업이 이루워져야합니다.`
 그래서 중간에 데이터 다운로드는 다른 쓰레드에서 작업하다가 이미지뷰에 이미지를 붙히는 작업은 main쓰레드에서 하도록 설정을 해준거죠.
 이렇게 OperationQueue.main.addOperation는 메인쓰레드 큐에 오퍼레이션을 넣어주게 됩니다.
-![8.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/8.png)
+![8.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/8.png)
 
 한번 실행을 해볼까요?
-![6.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/6.png)
+![6.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/6.png)
 
 다운로드 버튼을 누르고 +1버튼을 눌러보니 레이블이 잘 갱신이 되네요.
 
-![7.png](https://MinominoDomino.github.io/assets/img/ios/oprationqueue/7.png)
+![7.png](https://MinominoDomino.github.io/assets/img/ios/oprationQueue/7.png)
 
 ## 참조
 [Apple Developer document - Operation](https://developer.apple.com/documentation/foundation/operation)
