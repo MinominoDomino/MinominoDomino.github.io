@@ -3,7 +3,7 @@ layout: post
 title:  "[IOS] 오퍼레이션큐의 addOperation()(Operation Queue)"
 subtitle:   "SWIFT Operation Queue"
 categories: devlog
-tags: swift
+tags: ios
 
 ---
 
