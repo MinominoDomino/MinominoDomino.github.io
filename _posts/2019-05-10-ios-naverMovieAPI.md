@@ -12,9 +12,9 @@ tags: ios
 오늘은 네이버 검색API를 사용하는법을 알아보겠습니다.
 
 구글, 네이버, 카카오 등 여러 IT서비스 기업에서는 자사 서비스를 이용 할 수 있는 API를 제공하고있습니다.
-이런 API서비스들은 ` HTTP요청과 응답` 으로 데이터를 제공해줍니다.
+이런 API서비스들은 ` HTTP요청`과 `응답` 으로 데이터를 제공해줍니다.
 
-데이터의 포맷은 보통 ` JSON` 과 ` XML` 로 제공합니다.
+데이터의 포맷은 보통 `JSON` 과 `XML` 로 제공합니다.
 
 IOS JSON 디코딩과 인코딩을 제공하는 codabel 클래스를 알아봤으니 실제로 써보죠.
 
@@ -73,7 +73,7 @@ IOS JSON 디코딩과 인코딩을 제공하는 codabel 클래스를 알아봤�
 이 파일에서는 API 출력 포멧에 맞는 데이터 구조와 json디코딩을 할 수 있도록 준비하고
 변환된 객체를 배열에 저장해둘게요.
 우리는 json으로 오는 데이터의 구조를 알고 있으니까 거기에 맞게 구조체로 만들어 줄게요.
-`Codable 키워드 잊지마세요~`
+`Codable 채택 잊지마세요~`
 그리고 싱글톤 객체로 데이터 지닐 데이터 매니저를 만들겠습니다.
 ![8.png](https://MinominoDomino.github.io/assets/img/ios/naverAPI/8.png)
 
@@ -96,6 +96,7 @@ TextField에서 검색할 영화이름을 받아와서 쿼리스트링을 만들
 이제 URL를 hTTP요청하면 되는데요.
 호출 예시에 보면 HTTP헤더로 우리가 발급받은 아이디와 시크릿을 붙여줘야해요.
 ![11.png](https://MinominoDomino.github.io/assets/img/ios/naverAPI/11.png)
+
 `URLRequest`에서 `addvalue()`로 붙여줄게요.
 ![12.png](https://MinominoDomino.github.io/assets/img/ios/naverAPI/12.png)
 
