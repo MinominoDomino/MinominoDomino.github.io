@@ -12,6 +12,8 @@ Unwind세그웨이와 Custom세그웨이(Unwind Segue And Custom Segue)를 알�
 오늘은 Unwind세그웨이와 Custom세그웨이에 대해 알아보겠습니다.
 - Unwind Segue 연결
 - Unwind Segue 제어
+- Custom Segue 연결
+- Unwind Custom Segue 연결
 
 
 ## Unwind Segue
@@ -82,11 +84,97 @@ Destination 뷰 컨트롤러에서 shouldPerformSegue()와 prepare()를 오버�
 Unwind Segue를 설명할때 말한대로 View3Controller에서 shouldPerformSegue()를 호출하고 View2Controller에서 canPerformUnwindSegueAction()이 호출됩니다.
 이후, View3Controller에서 prepare()가 실행되고 화면이 View3에서 View2로 unwind되는 것을 볼 수 있습니다.
 
+## Custom Segue
+커스텀 세그웨이는 앞서 말한 일반적인 세그웨이와 Unwind 세그웨이는 일반적인 트랜지션을 지원합니다.
+사용자가 원하는 트랜지션을 하는 세그웨이는 Custom으로 구현해야합니다.
+Custom Segue는 `UIStoryboardSegue클래스`에 구현되어있습니다.
+해당 클래스를 서브클래싱하여 `perform()`를 오버라이드하여 구현합니다.
+
+## Custom Segue 및 Unwind Custom Segue 연결
+먼저 커스텀 세그웨이를 구현할 클래스를 만들어 줍니다.
+코코아 프레임워크에서 UIStoryboardSegue를 서브클래싱하는 CustomSegue클래스를 만들겠습니다.
+![7.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/7.png)
+
+이후 그림과 같이 화면을 구성하겠습니다.
+새로운 뷰 컨트롤러를 추가하고 3번째 씬의 버튼과 세그웨이로 연결합니다.
+속성 인스펙터에 클래스를 CustomSegue로 변경하고 kind에 세그웨이 종류를 Custom으로 변경합니다.
+커스텀 세그웨이의 세그웨이 아이콘이 변경되는 것을 볼 수 있습니다.
+![8.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/8.png)
+
+커스텀 세그웨이를 위해서 두개의 메서드를 오버라이드 합니다.
+첫번째, `init()`입니다. 
+이 메서드에서는 초기화를 위한 오버라이드 메서드이며, 정상적인 세그웨이 호출을 위하여 상위 클래스의 init()를 호출해야 합니다. 
+
+두번째, `perform()`입니다.
+이 메서드에서는 실제 커스텀 세그웨이의 트랜지션을 구현합니다.
+화면 전환의 애니메이션이 등 모든 것을 직접 구현해야합니다.
+
+아래 처럼 init과 perform을 오버라이드하여 예제소스를 사용하겠습니다.
+
+```swift
+    override init(identifier: String?, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: destination)
+    }
+    
+    override func perform() {
+        var frame = source.view.bounds
+        frame.origin.y = frame.height
+        frame.size.height = frame.height / 2
+        
+        source.view.addSubview(destination.view)
+        destination.view.frame = frame
+        destination.view.alpha = 0.0
+        
+        source.addChild(destination)
+        
+        frame.origin.y = source.view.bounds.height / 2
+        
+        UIView.animate(withDuration: 0.3) {
+            self.destination.view.frame = frame
+            self.destination.view.alpha = 1.0
+        }
+    }
+```
+
+실행하여 확인하면 화면의 반을 새로운 뷰가 출력됩니다.
+![9.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/9.png)
+
+하지만 내리기 버튼을 통한 Unwind Segue를 위해서는 Custom에서는 직접 구현을 해줘야합니다.
+Custom Unwind Segue를 위해 CustomSegue클래스를 서브클래싱하는 CustomSegueUnwind클래스를 생성합니다.
+![10.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/10.png)
+
+`perform()`를 오버라이드하고 트랜지션을 구현합니다.
+예제소스를 따라하겠습니다.
+
+```swift
+override func perform() {
+        var frame = source.view.frame
+        frame = frame.offsetBy(dx: 0, dy: frame.height)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.source.view.frame = frame
+            self.source.view.alpha = 0.0
+        }, completion: { finished in
+            self.source.view.removeFromSuperview()
+            self.source.removeFromParent()
+        })
+    }
+```
+
+View3에 Unwind 세그웨이 액션을 만들고 내리기 버튼과 연결해줍니다.
+클래스를 CustomSegueUnwind로 변경하고 실행하여 확인하겠습니다.
+![11.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/11.png)
+
+
+정상적으로 커스텀 세그웨이로 화면이 전환되는 것을 볼 수 있습니다.
+![12.png](https://MinominoDomino.github.io/assets/img/ios/UnwindAndCustomSegue/12.png)
 
 
 
 ## 참조
 [Apple Developer document - UIViewcontroller](https://developer.apple.com/documentation/uikit/uiviewcontroller)
+[Apple Developer document - UIStoryboardSegue](https://developer.apple.com/documentation/uikit/uistoryboardsegue)
+
 
 
 ###### 해당 챕터의 예제 소스는 제 깃헙에 올라가 있어요~
